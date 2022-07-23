@@ -32,10 +32,36 @@ class TamagotchiViewController: UIViewController {
 
     }
  
+    @IBAction func startButtonClicked(_ sender: UIButton) {
+        
+        if nameLabel.text == "준비 중이에요" {
+            
+            let alret = UIAlertController(title: "선택 불가", message: "싹트지 않은 새싹은 선택할 수 없어요.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default) { _ in
+                self.dismiss(animated: true)
+            }
+            
+            alret.addAction(ok)
+            present(alret, animated: true, completion: nil)
+            
+        } else {
+        // 시작하기 버튼 클릭 시
+        // 1. 선택한 다마고치 정보 그대로 보여줘야 함 (UserDefault)
+        // 선택한 다마고치 정보를 어떻게 가져오고 어떻게 저장해야할까?
+        // 2. 엔트리 포인트를 메인 화면으로 변경 필요
+        // 3. 메인 화면 네비게이션 임베디드 및 rightBarbutton Item 추가 필요
+        
+        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.id) as! TamagotchiMainViewController
+        
+        let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+        }
+        
+    }
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
-        
         self.dismiss(animated: true)
-        
     }
     
     // 전달 받은 값 아울렛 변수에 할당

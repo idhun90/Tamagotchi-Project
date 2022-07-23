@@ -386,13 +386,13 @@
                                 <rect key="frame" x="41.5" y="211.5" width="331" height="473"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3-8" translatesAutoresizingMaskIntoConstraints="NO" id="Tw6-PP-XBi">
-                                        <rect key="frame" x="99.5" y="70" width="132" height="132.5"/>
+                                        <rect key="frame" x="99.5" y="60" width="132" height="132.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tw6-PP-XBi" secondAttribute="height" id="abb-kD-LKv"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반짝반짝 다마고치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-82-Pye">
-                                        <rect key="frame" x="111.5" y="209.5" width="108" height="20"/>
+                                        <rect key="frame" x="111.5" y="199.5" width="108" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="zV9-Jf-gGU"/>
                                         </constraints>
@@ -415,6 +415,9 @@
                                                 <rect key="frame" x="165.5" y="0.0" width="165.5" height="50"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="시작하기"/>
+                                                <connections>
+                                                    <action selector="startButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0xl-e3-lH3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -429,14 +432,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id1-BC-Tds">
-                                        <rect key="frame" x="30" y="254.5" width="271" height="0.5"/>
+                                        <rect key="frame" x="30" y="244.5" width="271" height="0.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="AAP-Bm-XWp"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGd-nq-0Op">
-                                        <rect key="frame" x="30" y="280" width="271" height="117.5"/>
+                                        <rect key="frame" x="30" y="270" width="271" height="127.5"/>
                                         <string key="text">저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요저는 반짝반짝 다마고치에요</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -453,7 +456,7 @@
                                     <constraint firstAttribute="trailing" secondItem="bGd-nq-0Op" secondAttribute="trailing" constant="30" id="Byp-Jy-6cD"/>
                                     <constraint firstAttribute="trailing" secondItem="zrQ-p2-MTd" secondAttribute="trailing" id="I5b-uS-zin"/>
                                     <constraint firstItem="id1-BC-Tds" firstAttribute="top" secondItem="4Yb-82-Pye" secondAttribute="bottom" constant="25" id="Lqn-bc-bJd"/>
-                                    <constraint firstItem="Tw6-PP-XBi" firstAttribute="top" secondItem="dWq-3E-Sgs" secondAttribute="top" constant="70" id="Nw0-HC-qLb"/>
+                                    <constraint firstItem="Tw6-PP-XBi" firstAttribute="top" secondItem="dWq-3E-Sgs" secondAttribute="top" constant="60" id="Nw0-HC-qLb"/>
                                     <constraint firstItem="bGd-nq-0Op" firstAttribute="top" secondItem="id1-BC-Tds" secondAttribute="bottom" constant="25" id="PFl-mT-SFp"/>
                                     <constraint firstAttribute="trailing" secondItem="gny-Ge-Hst" secondAttribute="trailing" id="T47-4h-B7e"/>
                                     <constraint firstItem="4Yb-82-Pye" firstAttribute="centerX" secondItem="dWq-3E-Sgs" secondAttribute="centerX" id="byz-s8-GLk"/>
@@ -468,7 +471,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.19307197430699141" green="0.062946955048066924" blue="0.04873948784200749" alpha="0.20068027210884354" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dWq-3E-Sgs" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="3Ig-Tu-Xft"/>
                             <constraint firstItem="dWq-3E-Sgs" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="CCJ-Ri-ICb"/>
