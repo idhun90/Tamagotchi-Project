@@ -40,6 +40,15 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.id) as! TamagotchiViewController
+        
+        vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     func collectionViewLayout() {
         
         let layout = UICollectionViewFlowLayout()

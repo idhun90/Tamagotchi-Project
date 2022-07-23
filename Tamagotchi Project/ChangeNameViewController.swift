@@ -13,6 +13,8 @@ class ChangeNameViewController: UIViewController {
         nameTextField.textColor = .customFontCornerWidthColor
         nameTextField.font = .boldSystemFont(ofSize: 15)
         buttomLine.backgroundColor = .customFontCornerWidthColor
+        nameTextField.placeholder = "주인님 이름을 알려주세요"
+        
         
     }
 

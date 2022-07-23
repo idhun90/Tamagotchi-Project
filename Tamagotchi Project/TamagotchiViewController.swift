@@ -8,6 +8,8 @@
 import UIKit
 
 class TamagotchiViewController: UIViewController {
+    
+    static let id = "TamagotchiViewController"
 
     @IBOutlet weak var tamagotchiImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,6 +26,11 @@ class TamagotchiViewController: UIViewController {
         designUI()
     }
  
+    @IBAction func cancelButtonClicked(_ sender: UIButton) {
+        
+        self.dismiss(animated: true)
+        
+    }
     
     func designUI() {
         popUpView.backgroundColor = .customBackgroundColor
@@ -49,9 +56,9 @@ class TamagotchiViewController: UIViewController {
             i.titleLabel?.font = .boldSystemFont(ofSize: 15)
             i.setTitleColor(.customFontCornerWidthColor, for: .normal)
             i.backgroundColor = .customBackgroundColor
-            i.setTitleColor(.red, for: .highlighted)
+//            i.setTitleColor(.red, for: .highlighted)
             } else {
-             print("버튼 확인 요망")
+             print("오류 발생, 버튼 확인 요망")
             }
         }
         
