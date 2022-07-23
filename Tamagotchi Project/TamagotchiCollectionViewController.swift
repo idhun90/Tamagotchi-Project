@@ -17,7 +17,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
 //    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        tamagotchiData.tamagotchi.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

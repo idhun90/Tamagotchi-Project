@@ -22,9 +22,6 @@ class TamagotchiViewController: UIViewController {
         super.viewDidLoad()
         popUpView.backgroundColor = .customBackgroundColor
         designUI()
-        
-        
-
     }
  
     
@@ -48,11 +45,14 @@ class TamagotchiViewController: UIViewController {
         
         
         for i in [cancelButton, startButton] {
-            
-            i?.titleLabel?.font = .boldSystemFont(ofSize: 15)
-            i?.setTitleColor(.customFontCornerWidthColor, for: .normal)
-            i?.backgroundColor = .customBackgroundColor
-            i?.setTitleColor(.red, for: .highlighted)
+            if let i = i {
+            i.titleLabel?.font = .boldSystemFont(ofSize: 15)
+            i.setTitleColor(.customFontCornerWidthColor, for: .normal)
+            i.backgroundColor = .customBackgroundColor
+            i.setTitleColor(.red, for: .highlighted)
+            } else {
+             print("버튼 확인 요망")
+            }
         }
         
         lineView.backgroundColor = .customFontCornerWidthColor
