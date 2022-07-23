@@ -28,6 +28,8 @@ class TamagotchiMainViewController: UIViewController {
     var level = 1
     var riceCount: Double = 0
     var waterCount: Double = 0
+    var say: [String] = ["구조체 값 전달 더 공부하세요", "엔트리 포인트 코드 더 구현 공부하세요", "열거형도 더 하세요", "잠은 죽어서 잘 수 있어요"]
+    var sayLv10: [String] = ["배불러요", "꺼억", "더 못 먹겠어요"]
     
     
     
@@ -42,10 +44,13 @@ class TamagotchiMainViewController: UIViewController {
         riceCountLabel.text = "밥알 \(Int(riceCount))개"
         waterCountLabel.text = "물방울 \(Int(waterCount))개"
         
-        
         designUI()
         loadData()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        sayRandom()
     }
     
     // 밥알 버튼 클릭
@@ -74,6 +79,8 @@ class TamagotchiMainViewController: UIViewController {
         }
         riceTextField.text?.removeAll()
         print("밥알 개수 \(riceCount)")
+        
+        sayRandom()
         riceCountLabel.text = "밥알 \(Int(riceCount))개"
         calculateLevelandUpdateImage()
     }
@@ -104,6 +111,8 @@ class TamagotchiMainViewController: UIViewController {
         }
         waterTextField.text?.removeAll()
         print("물방울 개수 \(waterCount)")
+        
+        sayRandom()
         waterCountLabel.text = "물방울 \(Int(waterCount))개"
         calculateLevelandUpdateImage()
     }
@@ -222,6 +231,14 @@ class TamagotchiMainViewController: UIViewController {
         
         
         view.backgroundColor = .customBackgroundColor
+    }
+    
+    func sayRandom() {
+        if level == 10 {
+            messageLabel.text = sayLv10.randomElement()
+        } else {
+            messageLabel.text = say.randomElement()
+        }
     }
     
     // 숫자 키패드 입력 후 화면 터치 시 키보드 내림

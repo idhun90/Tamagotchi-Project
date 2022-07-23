@@ -14,7 +14,7 @@ class PreferencesTableViewController: UITableViewController {
     let preferenceName = ["내 이름 설정하기", "다마고치 변경하기", "데이터 초기화"]
     let preferenceImage = ["pencil", "moon.fill", "arrow.clockwise"]
     
-    var myName: [String] = ["고래밥", "칙촉", "냉방병 걸린 스폰지밥", "비둘기", "작심삼일", "갑오징어"]
+    var defaultName: [String] = ["고래밥", "칙촉", "스폰지밥", "비둘기", "갑오징어"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,7 @@ class PreferencesTableViewController: UITableViewController {
 
     }
 
-    // MARK: - Table view data source
 
- 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return preferenceName.count
@@ -53,7 +51,7 @@ class PreferencesTableViewController: UITableViewController {
         
         if cell.preferencesNameLabel.text == preferenceName[0] {
             // 사용자가 첫 설정을 하지 않았을 때
-            cell.rightNameLabel.text = myName.randomElement()!
+            cell.rightNameLabel.text = defaultName.randomElement()!
             // 사용자가 이름을 변경했을 때
         } else {
             cell.rightNameLabel.text = ""
