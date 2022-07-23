@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iog-Lf-lhj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ann-GY-1ha">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -259,6 +259,76 @@
             </objects>
             <point key="canvasLocation" x="1892.753623188406" y="128.57142857142856"/>
         </scene>
+        <!--Preferences Table View Controller-->
+        <scene sceneID="62u-0Q-Amb">
+            <objects>
+                <tableViewController storyboardIdentifier="PreferencesTableViewController" id="Ann-GY-1ha" customClass="PreferencesTableViewController" customModule="Tamagotchi_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="JIv-6q-AgV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PreferencesTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PreferencesTableViewCell" rowHeight="100" id="nVR-zm-eaQ" customClass="PreferencesTableViewCell" customModule="Tamagotchi_Project" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nVR-zm-eaQ" id="zNq-Xn-yJs">
+                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Htc-MG-zSD">
+                                            <rect key="frame" x="20" y="40" width="25" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="eX9-lB-y7g"/>
+                                                <constraint firstAttribute="height" secondItem="Htc-MG-zSD" secondAttribute="width" id="r9q-GC-eMI"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63i-bx-ZyQ">
+                                            <rect key="frame" x="334" y="35" width="41.5" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="fiE-1f-aV4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 이름 설정하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iui-08-aKC">
+                                            <rect key="frame" x="65" y="35" width="120" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="loM-HZ-Rh4"/>
+                                                <constraint firstAttribute="height" constant="30" id="pwM-as-GbV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iui-08-aKC" firstAttribute="leading" secondItem="Htc-MG-zSD" secondAttribute="trailing" constant="20" id="4mg-iG-SfN"/>
+                                        <constraint firstItem="Htc-MG-zSD" firstAttribute="centerY" secondItem="zNq-Xn-yJs" secondAttribute="centerY" id="L6u-mT-HpA"/>
+                                        <constraint firstItem="Htc-MG-zSD" firstAttribute="leading" secondItem="zNq-Xn-yJs" secondAttribute="leading" constant="20" id="VSb-g0-kPT"/>
+                                        <constraint firstItem="63i-bx-ZyQ" firstAttribute="centerY" secondItem="zNq-Xn-yJs" secondAttribute="centerY" id="aLP-dS-ubo"/>
+                                        <constraint firstItem="63i-bx-ZyQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iui-08-aKC" secondAttribute="trailing" constant="20" id="bBS-L9-an9"/>
+                                        <constraint firstItem="iui-08-aKC" firstAttribute="centerY" secondItem="zNq-Xn-yJs" secondAttribute="centerY" id="dNs-Aa-4YH"/>
+                                        <constraint firstAttribute="trailing" secondItem="63i-bx-ZyQ" secondAttribute="trailing" constant="10" id="eCx-fA-ISF"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="preferencesImageView" destination="Htc-MG-zSD" id="xbK-zF-Uvc"/>
+                                    <outlet property="preferencesNameLabel" destination="iui-08-aKC" id="Pj6-Iy-6zZ"/>
+                                    <outlet property="rightNameLabel" destination="63i-bx-ZyQ" id="nbo-tw-qbG"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ann-GY-1ha" id="AOd-BZ-sBb"/>
+                            <outlet property="delegate" destination="Ann-GY-1ha" id="Nxb-el-XiF"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6IA-XH-7bR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1626" y="-659"/>
+        </scene>
         <!--Tamagotchi View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -398,6 +468,7 @@
         <image name="bubble" width="222" height="142"/>
         <image name="drop.circle" catalog="system" width="128" height="121"/>
         <image name="leaf.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
