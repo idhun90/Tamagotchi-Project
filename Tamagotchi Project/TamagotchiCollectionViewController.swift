@@ -35,6 +35,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         cell.tamagotchiLabel.textColor = .customFontCornerWidthColor
         
         let data = tamagotchiData.tamagotchi[indexPath.row]
+        print(data)
         cell.configCell(data: data)
         
         return cell
@@ -42,8 +43,23 @@ class TamagotchiCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+//        print(indexPath)
+//        if indexPath == [0,0] {
+//
+//        } else if indexPath == [0,1] {
+//
+//        }else if indexPath == [0,2] {
+//
+//        } else {
+//            "준비 중입니다."
+//        }
+//
         let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.id) as! TamagotchiViewController
+        
+        // 값 전달
+        vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]
+        print(vc.tamagotchidata)
         
         vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
         self.present(vc, animated: true, completion: nil)

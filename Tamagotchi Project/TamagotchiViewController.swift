@@ -20,16 +20,34 @@ class TamagotchiViewController: UIViewController {
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var lineView2: UIView!
     
+    // 전달 데이터 저장용
+    var tamagotchidata: Tamagotchi?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.backgroundColor = .customBackgroundColor
         designUI()
+        
+        getData(data: tamagotchidata)
+
     }
  
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
         
         self.dismiss(animated: true)
         
+    }
+    
+    // 전달 받은 값 아울렛 변수에 할당
+    func getData(data: Tamagotchi?) {
+        
+        guard let data = data else {
+            print("다마고치 정보 값을 전달 받지 못 했습니다.")
+            return }
+        
+        tamagotchiImageView.image = UIImage(named: data.image)
+        nameLabel.text = data.name
+        introLabel.text = data.introduce
     }
     
     func designUI() {
