@@ -25,6 +25,11 @@ class TamagotchiMainViewController: UIViewController {
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var lineView2: UIView!
     
+    var level = 1
+    var riceCount: Double = 0
+    var waterCount: Double = 0
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +38,73 @@ class TamagotchiMainViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(transeferToPreferences))
         navigationController?.navigationBar.tintColor = .customFontCornerWidthColor
         
+        levelLabel.text = "LV \(level)"
+        riceCountLabel.text = "밥알 \(Int(riceCount))개"
+        waterCountLabel.text = "물방울 \(Int(waterCount))개"
+        
+        
         designUI()
         loadData()
         
     }
     
+    @IBAction func clickedAddRiceButton(_ sender: UIButton) {
+        // 숫자 키보드로 설정했기 때문에 텍스트필드에 빈 값과 최대 입력 값만 체크하면 된다.
+        if let riceTextFieldCount = riceTextField.text {
+            
+            if riceTextFieldCount.isEmpty {
+                riceCount += 1
+                
+            } else if Double(riceTextFieldCount)! >= 0 , Double(riceTextFieldCount)! < 100 {
+                riceCount += Double(riceTextFieldCount)!
+                
+            } else if Int(riceTextFieldCount)! >= 100 {
+                let alret = UIAlertController(title: "오류", message: "한 번에 먹을 수 있는 밥의 양은 99개입니다.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                
+                alret.addAction(ok)
+                self.present(alret, animated: true, completion: nil)
+                
+            } else {
+                print("오류가 발생했습니다.")
+            }
+        } else {
+            print("nil이 발생했습니다.")
+        }
+        riceTextField.text?.removeAll()
+        print("밥알 개수 \(riceCount)")
+        riceCountLabel.text = "밥알 \(Int(riceCount))개"
+        calculateLevelandUpdateImage()
+    }
+    
+    @IBAction func clickedAddWaterButton(_ sender: UIButton) {
+        // 숫자 키보드로 설정했기 때문에 텍스트필드에 빈 값과 최대 입력 값만 체크하면 된다.
+        if let waterTextFieldCount = waterTextField.text {
+            
+            if waterTextFieldCount.isEmpty {
+                waterCount += 1
+                
+            } else if Double(waterTextFieldCount)! >= 0 , Double(waterTextFieldCount)! < 50 {
+                waterCount += Double(waterTextFieldCount)!
+                
+            } else if Int(waterTextFieldCount)! >= 50 {
+                let alret = UIAlertController(title: "오류", message: "한 번에 먹을 수 있는 물방울의 양은 49개입니다.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                
+                alret.addAction(ok)
+                self.present(alret, animated: true, completion: nil)
+                
+            } else {
+                print("오류가 발생했습니다.")
+            }
+        } else {
+            print("nil이 발생했습니다.")
+        }
+        waterTextField.text?.removeAll()
+        print("물방울 개수 \(waterCount)")
+        waterCountLabel.text = "물방울 \(Int(waterCount))개"
+        calculateLevelandUpdateImage()
+    }
     // 설정 화면 이동
     @objc func transeferToPreferences() {
         
@@ -58,7 +125,53 @@ class TamagotchiMainViewController: UIViewController {
         
         characterNameLabel.text = name
     }
-
+    
+    func calculateLevelandUpdateImage() {
+        
+        var valueDouble = riceCount/5 + waterCount/2
+        var levelValue = Int(valueDouble)
+        
+        switch levelValue {
+        case 0..<20 :
+            level = 1
+            characterImageView.image = UIImage(named: "2-1")
+        case 20..<30 :
+            level = 2
+            characterImageView.image = UIImage(named: "2-2")
+        case 30..<40 :
+            level = 3
+            characterImageView.image = UIImage(named: "2-3")
+        case 40..<50 :
+            level = 4
+            characterImageView.image = UIImage(named: "2-4")
+        case 50..<60 :
+            level = 5
+            characterImageView.image = UIImage(named: "2-5")
+        case 60..<70 :
+            level = 6
+            characterImageView.image = UIImage(named: "2-6")
+        case 70..<80 :
+            level = 7
+            characterImageView.image = UIImage(named: "2-7")
+        case 80..<90 :
+            level = 8
+            characterImageView.image = UIImage(named: "2-8")
+        case 90..<100 :
+            level = 9
+            characterImageView.image = UIImage(named: "2-9")
+        case 100... :
+            level = 10
+            characterImageView.image = UIImage(named: "2-9")
+        default:
+            print("오류가 발생했습니다.")
+        }
+        print("경험치 양 \(levelValue)")
+        levelLabel.text = "LV \(level)"
+        
+        
+    }
+    
+    
     func designUI() {
         
         let labellist = [messageLabel, characterNameLabel, levelLabel, riceCountLabel, waterCountLabel]
@@ -100,8 +213,17 @@ class TamagotchiMainViewController: UIViewController {
         lineView.backgroundColor = .customFontCornerWidthColor
         lineView2.backgroundColor = .customFontCornerWidthColor
         
-       
+        riceTextField.keyboardType = .numberPad
+        waterTextField.keyboardType = .numberPad
+        riceTextField.placeholder = "밥알 개수를 입력해주세요."
+        waterTextField.placeholder = "물방울 개수를 입력해주세요."
+        
         
         view.backgroundColor = .customBackgroundColor
+    }
+    
+    // 숫자 키패드 입력 후 화면 터치 시 키보드 내림
+    @IBAction func returnKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }

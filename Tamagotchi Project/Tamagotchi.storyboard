@@ -183,6 +183,9 @@
                                 <state key="normal" title="물먹기" image="leaf.circle" catalog="system">
                                     <color key="titleColor" systemColor="tintColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickedAddWaterButton:" destination="hRb-5n-NfK" eventType="touchUpInside" id="FRv-Y4-R65"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2R-fU-Rf0">
                                 <rect key="frame" x="251" y="587.5" width="93" height="44"/>
@@ -195,6 +198,9 @@
                                 <state key="normal" title="밥먹기" image="drop.circle" catalog="system">
                                     <color key="titleColor" systemColor="tintColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickedAddRiceButton:" destination="hRb-5n-NfK" eventType="touchUpInside" id="C1t-PZ-vGl"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6F-Fe-dcA">
                                 <rect key="frame" x="78" y="688.5" width="163" height="0.5"/>
@@ -206,6 +212,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bAg-3u-O7R"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ww9-9i-mAc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nyt-YL-bR3" secondAttribute="trailing" constant="15" id="3dK-gH-M6f"/>
                             <constraint firstItem="nyt-YL-bR3" firstAttribute="centerX" secondItem="ww9-9i-mAc" secondAttribute="centerX" id="8FG-bf-kRo"/>
@@ -238,6 +245,9 @@
                             <constraint firstItem="Ppq-Bp-n3T" firstAttribute="centerY" secondItem="K2R-fU-Rf0" secondAttribute="centerY" id="x3I-vT-195"/>
                             <constraint firstItem="bAg-3u-O7R" firstAttribute="trailing" secondItem="K2R-fU-Rf0" secondAttribute="trailing" constant="70" id="xsN-42-cnb"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NF3-qd-mvO" appends="YES" id="sjj-hJ-HE4"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="characterImageView" destination="bP8-5A-XdN" id="eT8-DL-Rrk"/>
@@ -256,6 +266,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6R3-Xh-t60" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NF3-qd-mvO">
+                    <connections>
+                        <action selector="returnKeyboard:" destination="hRb-5n-NfK" id="G65-Le-5kv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1892.753623188406" y="128.57142857142856"/>
         </scene>

@@ -64,16 +64,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
             
             present(alert, animated: true, completion: nil)
         }
-        
-        //        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-        //        let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.id) as! TamagotchiViewController
-        //
-        //        // 값 전달
-        //        vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]
-        //        print(vc.tamagotchidata)
-        //
-        //        vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
-        //        self.present(vc, animated: true, completion: nil)
+
     }
     
     func collectionViewLayout() {
