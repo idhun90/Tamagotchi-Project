@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ann-GY-1ha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CS0-eI-cwp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -327,7 +327,52 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6IA-XH-7bR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="-659"/>
+            <point key="canvasLocation" x="2751" y="-457"/>
+        </scene>
+        <!--Change Name View Controller-->
+        <scene sceneID="nKy-F1-6ZQ">
+            <objects>
+                <viewController storyboardIdentifier="ChangeNameViewController" id="CS0-eI-cwp" customClass="ChangeNameViewController" customModule="Tamagotchi_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zSq-Vc-2yu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="현재 설정된 이름 보여주기" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ck-0R-dnY">
+                                <rect key="frame" x="30" y="64" width="354" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dg3-gP-Hvy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGH-yI-r3O">
+                                <rect key="frame" x="30" y="98.5" width="354" height="0.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.40000000000000002" id="yzb-mH-4VF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Rsw-PK-eTj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rGH-yI-r3O" firstAttribute="leading" secondItem="0Ck-0R-dnY" secondAttribute="leading" id="5Po-bZ-wx1"/>
+                            <constraint firstItem="rGH-yI-r3O" firstAttribute="trailing" secondItem="0Ck-0R-dnY" secondAttribute="trailing" id="HeH-nE-FqN"/>
+                            <constraint firstItem="rGH-yI-r3O" firstAttribute="bottom" secondItem="0Ck-0R-dnY" secondAttribute="bottom" constant="5" id="UqS-gq-Ot3"/>
+                            <constraint firstItem="0Ck-0R-dnY" firstAttribute="top" secondItem="Rsw-PK-eTj" secondAttribute="top" constant="20" id="pby-iN-QuO"/>
+                            <constraint firstItem="0Ck-0R-dnY" firstAttribute="leading" secondItem="Rsw-PK-eTj" secondAttribute="leading" constant="30" id="qbo-id-f7V"/>
+                            <constraint firstItem="Rsw-PK-eTj" firstAttribute="trailing" secondItem="0Ck-0R-dnY" secondAttribute="trailing" constant="30" id="vgE-Rd-s66"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="psp-Sq-NYP"/>
+                    <connections>
+                        <outlet property="buttomLine" destination="rGH-yI-r3O" id="Tig-Wh-WKr"/>
+                        <outlet property="nameTextField" destination="0Ck-0R-dnY" id="LLU-83-m9W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hMS-z5-RZo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3478" y="-457"/>
         </scene>
         <!--Tamagotchi View Controller-->
         <scene sceneID="s0d-6b-0kx">

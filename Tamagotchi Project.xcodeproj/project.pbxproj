@@ -21,6 +21,7 @@
 		14F94AC4288AC23A00956ADE /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F94AC3288AC23A00956ADE /* Tamagotchi.swift */; };
 		14F94AC6288AC44100956ADE /* TamagotchiInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F94AC5288AC44100956ADE /* TamagotchiInfo.swift */; };
 		14F94AC8288AF8E200956ADE /* TamagotchiMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F94AC7288AF8E200956ADE /* TamagotchiMainViewController.swift */; };
+		14FD658C288BBEC6009E2A90 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD658B288BBEC6009E2A90 /* ChangeNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		14F94AC3288AC23A00956ADE /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 		14F94AC5288AC44100956ADE /* TamagotchiInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiInfo.swift; sourceTree = "<group>"; };
 		14F94AC7288AF8E200956ADE /* TamagotchiMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiMainViewController.swift; sourceTree = "<group>"; };
+		14FD658B288BBEC6009E2A90 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				14F94AC7288AF8E200956ADE /* TamagotchiMainViewController.swift */,
 				14AFFCD6288BAB0E00FEF4EB /* PreferencesTableViewController.swift */,
 				14AFFCD8288BACC200FEF4EB /* PreferencesTableViewCell.swift */,
+				14FD658B288BBEC6009E2A90 /* ChangeNameViewController.swift */,
 				14F94AB7288A8EAC00956ADE /* UIColor + Extention.swift */,
 				14F94AAA288A70B000956ADE /* Assets.xcassets */,
 				14F94AAC288A70B000956ADE /* LaunchScreen.storyboard */,
@@ -165,6 +168,7 @@
 				14F94ABA288A900D00956ADE /* TamagotchiCollectionViewController.swift in Sources */,
 				14F94AC8288AF8E200956ADE /* TamagotchiMainViewController.swift in Sources */,
 				14AFFCD9288BACC200FEF4EB /* PreferencesTableViewCell.swift in Sources */,
+				14FD658C288BBEC6009E2A90 /* ChangeNameViewController.swift in Sources */,
 				14AFFCD7288BAB0E00FEF4EB /* PreferencesTableViewController.swift in Sources */,
 				14F94AC4288AC23A00956ADE /* Tamagotchi.swift in Sources */,
 				14F94AA2288A70B000956ADE /* AppDelegate.swift in Sources */,

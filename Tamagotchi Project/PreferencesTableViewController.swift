@@ -64,3 +64,7 @@ class PreferencesTableViewController: UITableViewController {
 
 // 사용자가 처음 앱을 실행했을 때, 앱 내부에서 미리 설정된 이름 중 랜덤으로 선택해서 '내 이름' 설정해주기
 // 사용자가 '내 이름'을 변경했을 때, 사용자가 변경한 이름으로 보여주도록 설정하기
+
+func creatRightNameByUser() {
+    
+}
