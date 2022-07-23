@@ -57,8 +57,8 @@ class TamagotchiViewController: UIViewController {
         
         // 선택된 다마고치 정보 데이터 저장
         let selectedData = UserDefaults.standard
-        selectedData.set(nameLabel.text, forKey: "TamagotchiName")
-        print(selectedData.string(forKey: "TamagotchiName") == nil ? "저장된 값이 없습니다." : selectedData.string(forKey: "TamagotchiName")!)
+        selectedData.set(nameLabel.text, forKey: UserKeys.TamagotchiName.rawValue)
+        print(selectedData.string(forKey: UserKeys.TamagotchiName.rawValue) == nil ? "저장된 값이 없습니다." : selectedData.string(forKey: UserKeys.TamagotchiName.rawValue)!)
         
         // 엔트리 포인트 메인화면으로 변경
         let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene

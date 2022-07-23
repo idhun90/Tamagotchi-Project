@@ -13,8 +13,7 @@ class PreferencesTableViewController: UITableViewController {
     
     let preferenceName = ["내 이름 설정하기", "다마고치 변경하기", "데이터 초기화"]
     let preferenceImage = ["pencil", "moon.fill", "arrow.clockwise"]
-    
-    var defaultName: [String] = ["고래밥", "칙촉", "스폰지밥", "비둘기", "갑오징어"]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +22,6 @@ class PreferencesTableViewController: UITableViewController {
         navigationItem.title = "설정"
         
         
-
     }
 
 
@@ -51,10 +49,12 @@ class PreferencesTableViewController: UITableViewController {
         
         if cell.preferencesNameLabel.text == preferenceName[0] {
             // 사용자가 첫 설정을 하지 않았을 때
-            cell.rightNameLabel.text = defaultName.randomElement()!
+            let defaultName = UserDefaults.standard
+            cell.rightNameLabel.text = defaultName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장"
+            
             // 사용자가 이름을 변경했을 때
         } else {
-            cell.rightNameLabel.text = ""
+            cell.rightNameLabel.text = "" // 첫행만 오른쪽 레이블 표기 목적
         }
        
         return cell
@@ -67,16 +67,28 @@ class PreferencesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // '내 이름 설정하기' 항목 선택 시
+        if indexPath.row == 0 {
+        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: ChangeNameViewController.id) as! ChangeNameViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        }
+    
         // '다마고치 변경하기' 항목 선택 시
+        if indexPath.row == 1 {
+            
+        }
+        
         // '데이터 초기화' 항목 선택 시
         if indexPath.row == 2 {
             // 알람 추가
             let alert = UIAlertController(title: "데이터 초기화", message: "모든 데이터가 삭제됩니다.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
                 
-                // 저장된 데이터 초기화 구문 작성
+                // 저장된 데이터 모두 삭제
                 let selectedData = UserDefaults.standard
-                selectedData.removeObject(forKey: "TamagotchiName")
+                selectedData.removeObject(forKey: UserKeys.TamagotchiName.rawValue)
+                selectedData.removeObject(forKey: UserKeys.defaultName.rawValue)
                 
                 let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowsScene?.delegate as? SceneDelegate
@@ -87,7 +99,9 @@ class PreferencesTableViewController: UITableViewController {
                 sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
                 sceneDelegate?.window?.makeKeyAndVisible()
             }
+            
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            
             alert.addAction(ok)
             alert.addAction(cancel)
             

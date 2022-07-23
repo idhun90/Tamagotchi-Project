@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        if UserDefaults.standard.string(forKey: "TamagotchiName") == nil {
+        if UserDefaults.standard.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
             
             let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.id) as! TamagotchiCollectionViewController

@@ -1,10 +1,7 @@
-//
-//  TamagotchiMainViewController.swift
-//  Tamagotchi Project
-//
-//  Created by 이도헌 on 2022/07/23.
-//
-
+enum UserKeys: String {
+    case defaultName
+    case TamagotchiName
+}
 import UIKit
 
 class TamagotchiMainViewController: UIViewController {
@@ -30,13 +27,18 @@ class TamagotchiMainViewController: UIViewController {
     var waterCount: Double = 0
     var say: [String] = ["구조체 값 전달 더 공부하세요", "엔트리 포인트 코드 더 구현 공부하세요", "열거형도 더 하세요", "잠은 죽어서 잘 수 있어요"]
     var sayLv10: [String] = ["배불러요", "꺼억", "더 못 먹겠어요"]
-    
-    
+    let defaultName = ["대장", "스폰지밥", "고래밥", "칙촉", "돌고래", "비둘기", "갑오징어"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "대장님의 다마고치" // 추후 '대장' 리터럴 값이 아닌 동적으로 변화하는 값으로 변경 필요
+        let randomName = defaultName.randomElement()!
+        
+        title = "\(randomName)님의 다마고치" // 추후 '대장' 리터럴 값이 아닌 동적으로 변화하는 값으로 변경 필요
+        
+        let nameDate = UserDefaults.standard
+        nameDate.set(randomName, forKey: UserKeys.defaultName.rawValue) // 설정화면 '내 이름 바꾸기' 오른쪽 레이블 표시 목적
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(transeferToPreferences))
         navigationController?.navigationBar.tintColor = .customFontCornerWidthColor
         
@@ -51,6 +53,7 @@ class TamagotchiMainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         sayRandom()
+        print("viewWillAppear 작동됨")
     }
     
     // 밥알 버튼 클릭
@@ -116,27 +119,8 @@ class TamagotchiMainViewController: UIViewController {
         waterCountLabel.text = "물방울 \(Int(waterCount))개"
         calculateLevelandUpdateImage()
     }
-    // 설정 화면 이동
-    @objc func transeferToPreferences() {
-        
-        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-        let vs = sb.instantiateViewController(withIdentifier: PreferencesTableViewController.id) as! PreferencesTableViewController
-        
-        navigationItem.backButtonTitle = "" // 다음 화면 전환 시 백버튼 타이틀 없애기
-        self.navigationController?.pushViewController(vs, animated: true)
-        
-    }
     
-    func loadData() {
-        let selectedData = UserDefaults.standard
-        guard let name = selectedData.string(forKey: "TamagotchiName") else {
-            print("저장된 값이 없습니다.")
-            return
-        }
-        
-        characterNameLabel.text = name
-    }
-    
+    // 레벨 계산 및 대응하는 이미지
     func calculateLevelandUpdateImage() {
         
         let valueDouble = riceCount/5 + waterCount/2
@@ -179,8 +163,30 @@ class TamagotchiMainViewController: UIViewController {
         print("경험치 양 \(levelValue)")
         levelLabel.text = "LV \(level)"
         
+    }
+    
+    // 설정 화면 이동
+    @objc func transeferToPreferences() {
+        
+        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        let vs = sb.instantiateViewController(withIdentifier: PreferencesTableViewController.id) as! PreferencesTableViewController
+        
+        navigationItem.backButtonTitle = "" // 다음 화면 전환 시 백버튼 타이틀 없애기
+        self.navigationController?.pushViewController(vs, animated: true)
         
     }
+    
+    // 저장한 다마고치 데이터 가져오기
+    func loadData() {
+        let selectedData = UserDefaults.standard
+        guard let name = selectedData.string(forKey: UserKeys.TamagotchiName.rawValue) else {
+            print("저장된 값이 없습니다.")
+            return
+        }
+        
+        characterNameLabel.text = name
+    }
+    
     
     
     func designUI() {
