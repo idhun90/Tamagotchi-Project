@@ -34,7 +34,7 @@ class TamagotchiMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "대장님의 다마고치"
+        title = "대장님의 다마고치" // 추후 '대장' 리터럴 값이 아닌 동적으로 변화하는 값으로 변경 필요
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(transeferToPreferences))
         navigationController?.navigationBar.tintColor = .customFontCornerWidthColor
         
@@ -48,6 +48,7 @@ class TamagotchiMainViewController: UIViewController {
         
     }
     
+    // 밥알 버튼 클릭
     @IBAction func clickedAddRiceButton(_ sender: UIButton) {
         // 숫자 키보드로 설정했기 때문에 텍스트필드에 빈 값과 최대 입력 값만 체크하면 된다.
         if let riceTextFieldCount = riceTextField.text {
@@ -77,6 +78,7 @@ class TamagotchiMainViewController: UIViewController {
         calculateLevelandUpdateImage()
     }
     
+    // 물방울 버튼 클릭
     @IBAction func clickedAddWaterButton(_ sender: UIButton) {
         // 숫자 키보드로 설정했기 때문에 텍스트필드에 빈 값과 최대 입력 값만 체크하면 된다.
         if let waterTextFieldCount = waterTextField.text {
@@ -128,8 +130,8 @@ class TamagotchiMainViewController: UIViewController {
     
     func calculateLevelandUpdateImage() {
         
-        var valueDouble = riceCount/5 + waterCount/2
-        var levelValue = Int(valueDouble)
+        let valueDouble = riceCount/5 + waterCount/2
+        let levelValue = Int(valueDouble)
         
         switch levelValue {
         case 0..<20 :

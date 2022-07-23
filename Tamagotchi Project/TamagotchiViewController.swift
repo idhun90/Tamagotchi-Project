@@ -60,12 +60,15 @@ class TamagotchiViewController: UIViewController {
         selectedData.set(nameLabel.text, forKey: "TamagotchiName")
         print(selectedData.string(forKey: "TamagotchiName") == nil ? "저장된 값이 없습니다." : selectedData.string(forKey: "TamagotchiName")!)
         
+        // 엔트리 포인트 메인화면으로 변경
+        let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowsScene?.delegate as? SceneDelegate
+        
         let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.id) as! TamagotchiMainViewController
         
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
+        sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {

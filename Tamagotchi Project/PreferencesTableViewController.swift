@@ -75,7 +75,19 @@ class PreferencesTableViewController: UITableViewController {
             // 알람 추가
             let alert = UIAlertController(title: "데이터 초기화", message: "모든 데이터가 삭제됩니다.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
-                // 데이터 초기화 구문 작성
+                
+                // 저장된 데이터 초기화 구문 작성
+                let selectedData = UserDefaults.standard
+                selectedData.removeObject(forKey: "TamagotchiName")
+                
+                let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let sceneDelegate = windowsScene?.delegate as? SceneDelegate
+                
+                let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.id) as! TamagotchiCollectionViewController
+                
+                sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
+                sceneDelegate?.window?.makeKeyAndVisible()
             }
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
             alert.addAction(ok)
