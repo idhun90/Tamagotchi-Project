@@ -3,7 +3,7 @@ import UIKit
 class TamagotchiCollectionViewController: UICollectionViewController {
     
     var tamagotchiData = TamagotchiInfo()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -12,10 +12,6 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         
     }
 
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        <#code#>
-//    }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         tamagotchiData.tamagotchi.count
     }
@@ -43,26 +39,39 @@ class TamagotchiCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        print(indexPath)
-//        if indexPath == [0,0] {
-//
-//        } else if indexPath == [0,1] {
-//
-//        }else if indexPath == [0,2] {
-//
-//        } else {
-//            "준비 중입니다."
-//        }
-//
-        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.id) as! TamagotchiViewController
+        print(indexPath)
         
-        // 값 전달
-        vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]
-        print(vc.tamagotchidata)
+        if indexPath == [0, 0] || indexPath == [0, 1] || indexPath == [0, 2] {
+            
+            let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.id) as! TamagotchiViewController
+            
+            // 값 전달
+            vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]
+            print(vc.tamagotchidata)
+            
+            vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+            
+        } else {
+            let alert = UIAlertController(title: "아직 땅 속에 있어요.", message: nil , preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default) { _ in
+                self.dismiss(animated: true)
+            }
+            
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
         
-        vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+        //        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        //        let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.id) as! TamagotchiViewController
+        //
+        //        // 값 전달
+        //        vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]
+        //        print(vc.tamagotchidata)
+        //
+        //        vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
+        //        self.present(vc, animated: true, completion: nil)
     }
     
     func collectionViewLayout() {
@@ -81,7 +90,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         self.collectionView.backgroundColor = .customBackgroundColor
         
         collectionView.collectionViewLayout = layout
-
+        
     }
     
     
