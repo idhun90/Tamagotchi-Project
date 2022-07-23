@@ -34,13 +34,31 @@ class TamagotchiMainViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .customFontCornerWidthColor
         
         designUI()
+        loadData()
         
     }
     
+    // 설정 화면 이동
     @objc func transeferToPreferences() {
         
+        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        let vs = sb.instantiateViewController(withIdentifier: PreferencesTableViewController.id) as! PreferencesTableViewController
+        
+        navigationItem.backButtonTitle = "" // 다음 화면 전환 시 백버튼 타이틀 없애기
+        self.navigationController?.pushViewController(vs, animated: true)
+        
     }
- 
+    
+    func loadData() {
+        let selectedData = UserDefaults.standard
+        guard let name = selectedData.string(forKey: "TamagotchiName") else {
+            print("저장된 값이 없습니다.")
+            return
+        }
+        
+        characterNameLabel.text = name
+    }
+
     func designUI() {
         
         let labellist = [messageLabel, characterNameLabel, levelLabel, riceCountLabel, waterCountLabel]

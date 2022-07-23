@@ -46,12 +46,19 @@ class TamagotchiViewController: UIViewController {
         //            present(alert, animated: true, completion: nil)
         
         //        } else {
+        //        }
         
         // 시작하기 버튼 클릭 시
         // 1. 선택한 다마고치 정보 그대로 보여줘야 함 (UserDefault)
         // 선택한 다마고치 정보를 어떻게 가져오고 어떻게 저장해야할까?
         // 2. 엔트리 포인트를 메인 화면으로 변경 필요
         // 3. 메인 화면 네비게이션 임베디드 및 rightBarbutton Item 추가 필요
+        
+        
+        // 선택된 다마고치 정보 데이터 저장
+        let selectedData = UserDefaults.standard
+        selectedData.set(nameLabel.text, forKey: "TamagotchiName")
+        print(selectedData.string(forKey: "TamagotchiName") == nil ? "저장된 값이 없습니다." : selectedData.string(forKey: "TamagotchiName")!)
         
         let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.id) as! TamagotchiMainViewController

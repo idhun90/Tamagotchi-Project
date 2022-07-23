@@ -9,6 +9,8 @@ import UIKit
 
 class PreferencesTableViewController: UITableViewController {
     
+    static let id = "PreferencesTableViewController"
+    
     let preferenceName = ["내 이름 설정하기", "다마고치 변경하기", "데이터 초기화"]
     let preferenceImage = ["pencil", "moon.fill", "arrow.clockwise"]
     
@@ -18,6 +20,9 @@ class PreferencesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.backgroundColor = .customBackgroundColor
+        navigationItem.title = "설정"
+        
+        
 
     }
 
