@@ -13,23 +13,28 @@ class PreferencesTableViewController: UITableViewController {
     
     let preferenceName = ["내 이름 설정하기", "다마고치 변경하기", "데이터 초기화"]
     let preferenceImage = ["pencil", "moon.fill", "arrow.clockwise"]
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("설정화면 viewDidLoad 작동됨")
         
         tableView.backgroundColor = .customBackgroundColor
         navigationItem.title = "설정"
         
-        
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData() // 사용자가 이름을 설정했을 때 테이블 뷰 오른쪽 레이블 데이터 갱신
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return preferenceName.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -48,18 +53,23 @@ class PreferencesTableViewController: UITableViewController {
         cell.preferencesNameLabel.text = preferenceName[indexPath.row]
         
         if cell.preferencesNameLabel.text == preferenceName[0] {
-            // 사용자가 첫 설정을 하지 않았을 때
-            let defaultName = UserDefaults.standard
-            cell.rightNameLabel.text = defaultName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장"
             
-            // 사용자가 이름을 변경했을 때
+            // 사용자가 첫 설정을 하지 않았을 때
+            if UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue) ==  nil {
+                let defaultName = UserDefaults.standard
+                cell.rightNameLabel.text = defaultName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장"
+                print("기본 제공 이름으로 설정")
+            } else {
+                cell.rightNameLabel.text = UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue)
+                print("사용자가 설정한 이름으로 갱신")
+            }
         } else {
             cell.rightNameLabel.text = "" // 첫행만 오른쪽 레이블 표기 목적
         }
-       
+        
         return cell
     }
- 
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
@@ -68,14 +78,20 @@ class PreferencesTableViewController: UITableViewController {
         
         // '내 이름 설정하기' 항목 선택 시
         if indexPath.row == 0 {
-        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: ChangeNameViewController.id) as! ChangeNameViewController
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+            
+            let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: ChangeNameViewController.id) as! ChangeNameViewController
+            
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-    
+        
         // '다마고치 변경하기' 항목 선택 시
         if indexPath.row == 1 {
+            
+            let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.id) as! TamagotchiCollectionViewController
+            
+            self.navigationController?.pushViewController(vc, animated: true)
             
         }
         
@@ -89,6 +105,8 @@ class PreferencesTableViewController: UITableViewController {
                 let selectedData = UserDefaults.standard
                 selectedData.removeObject(forKey: UserKeys.TamagotchiName.rawValue)
                 selectedData.removeObject(forKey: UserKeys.defaultName.rawValue)
+                selectedData.removeObject(forKey: UserKeys.userSetupName.rawValue)
+                print("모든 데이터가 초기화 완료되었습니다.")
                 
                 let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowsScene?.delegate as? SceneDelegate

@@ -1,6 +1,7 @@
 enum UserKeys: String {
     case defaultName
     case TamagotchiName
+    case userSetupName
 }
 import UIKit
 
@@ -31,6 +32,7 @@ class TamagotchiMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("메인화면 viewDidLoad 작동됨")
         
         let randomName = defaultName.randomElement()!
         
@@ -52,8 +54,20 @@ class TamagotchiMainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        sayRandom()
-        print("viewWillAppear 작동됨")
+        
+        print("메인화면 viewWillAppear 작동됨")
+        sayRandom() // 아무말하기
+        
+        let nameData = UserDefaults.standard
+        // 사용자가 이름을 설정을 하지 않았을 때
+        if UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue) ==  nil {
+            title = "\(nameData.string(forKey: UserKeys.defaultName.rawValue) ?? "대장님")님의 다마고치"
+            print("기본 제공 이름으로 변경됨")
+        } else {
+            title = "\(UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue)!)님의 다마고치"
+            print("사용자가 설정한 이름으로 변경됨")
+        }
+        
     }
     
     // 밥알 버튼 클릭

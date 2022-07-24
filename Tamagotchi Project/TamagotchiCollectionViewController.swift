@@ -33,7 +33,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         cell.tamagotchiLabel.textColor = .customFontCornerWidthColor
         
         let data = tamagotchiData.tamagotchi[indexPath.row]
-        print(data)
+//        print(data)
         cell.configCell(data: data)
         
         return cell
@@ -50,7 +50,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
             
             // 값 전달
             vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]
-            print(vc.tamagotchidata!)
+//            print(vc.tamagotchidata!)
             
             vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
             self.present(vc, animated: true, completion: nil)
