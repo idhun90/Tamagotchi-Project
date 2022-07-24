@@ -103,7 +103,15 @@ class TamagotchiViewController: UIViewController {
         
         
         cancelButton.setTitle("취소", for: .normal)
-        startButton.setTitle("시작하기", for: .normal)
+        
+        let Tamagotchidata = UserDefaults.standard
+        if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
+            startButton.setTitle("시작하기", for: .normal)
+            print("저장된 데이터 값이 없습니다")
+        } else {
+            startButton.setTitle("변경하기", for: .normal)
+            print("저장된 데이터 값이 있습니다")
+        }
         
         
         for i in [cancelButton, startButton] {
@@ -111,7 +119,7 @@ class TamagotchiViewController: UIViewController {
                 i.titleLabel?.font = .boldSystemFont(ofSize: 15)
                 i.setTitleColor(.customFontCornerWidthColor, for: .normal)
                 i.backgroundColor = .customBackgroundColor
-                //            i.setTitleColor(.red, for: .highlighted)
+                //i.setTitleColor(.red, for: .highlighted)
             } else {
                 print("오류 발생, 버튼 확인 요망")
             }

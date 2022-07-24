@@ -13,8 +13,10 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         let Tamagotchidata = UserDefaults.standard
         if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
             title = "다마고치 선택하기"
+            print("저장된 데이터 값이 없습니다")
         } else {
             title = "다마고치 변경하기"
+            print("저장된 데이터 값이 있습니다")
         }
         
         collectionViewLayout()
