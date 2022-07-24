@@ -339,6 +339,7 @@ class TamagotchiMainViewController: UIViewController {
         waterTextField.keyboardType = .numberPad
         riceTextField.placeholder = "밥알 개수를 입력해주세요."
         waterTextField.placeholder = "물방울 개수를 입력해주세요."
+        riceTextField.font = .systemFont(ofSize: 15)
         
         view.backgroundColor = .customBackgroundColor
         
