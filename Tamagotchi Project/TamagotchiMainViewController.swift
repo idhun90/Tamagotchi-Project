@@ -69,22 +69,26 @@ class TamagotchiMainViewController: UIViewController {
         super.viewDidLoad()
         print("메인화면 viewDidLoad 작동됨")
         
-        // 최초 실행시 타이틀 제목
-        let randomName = defaultName.randomElement()!
-        title = "\(randomName)님의 다마고치" // 최초 앱 사용할 때만 사용 목적
-        
-        // 타이틀 데이터 값 저장
-        let nameDate = UserDefaults.standard
-        nameDate.set(randomName, forKey: UserKeys.defaultName.rawValue)
-        
+        // 다마고치 변경시 viewDidLoad()가 다시 호출됨. -> 사용자 설정 이름은 문제 없으나, 기본 제공 이름이 랜덤으로 또 바뀌는 현상 발견
+        if UserDefaults.standard.string(forKey: UserKeys.defaultName.rawValue) == nil {
+            // 최초 실행시 타이틀 제목
+            let randomName = defaultName.randomElement()!
+            title = "\(randomName)님의 다마고치" // 최초 앱 사용할 때만 사용 목적
+            
+            // 타이틀 데이터 값 저장
+            let nameDate = UserDefaults.standard
+            nameDate.set(randomName, forKey: UserKeys.defaultName.rawValue)
+        } else {
+            title = UserDefaults.standard.string(forKey: UserKeys.defaultName.rawValue)
+        }
         // 네비게이션 오른쪽 바 버튼 아이템 생성
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(transeferToPreferences))
         navigationController?.navigationBar.tintColor = .customFontCornerWidthColor
         
         
-//        levelLabel.text = "LV \(level)"
-//        riceCountLabel.text = "밥알 \(Int(riceCount))개"
-//        waterCountLabel.text = "물방울 \(Int(waterCount))개"
+        //        levelLabel.text = "LV \(level)"
+        //        riceCountLabel.text = "밥알 \(Int(riceCount))개"
+        //        waterCountLabel.text = "물방울 \(Int(waterCount))개"
         
         designUI() // 기본 UI 구성
         loadData() // 저장된 다마고치 이름 가져오기
@@ -123,7 +127,7 @@ class TamagotchiMainViewController: UIViewController {
         // 저장된 레벨 값을 가져와 대응되는 이미지 딕셔너리 키 값으로 설정하기
         characterImageView.image = UIImage(named: imageList[levelMachingToImage[level]!])
         
-
+        
         
     }
     
@@ -289,7 +293,7 @@ class TamagotchiMainViewController: UIViewController {
             print("매칭 이미지 오류 발생")
         }
         print(level)
-//        characterImageView.image = UIImage(named: imageList[levelAndImage[level]!])
+        //        characterImageView.image = UIImage(named: imageList[levelAndImage[level]!])
     }
     
     
