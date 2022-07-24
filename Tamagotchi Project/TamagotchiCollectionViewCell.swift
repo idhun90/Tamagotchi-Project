@@ -11,6 +11,7 @@ class TamagotchiCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var tamagotchiImageView: UIImageView!
     @IBOutlet weak var tamagotchiLabel: UILabel!
+    @IBOutlet weak var labelBackground: UIView!
     
     static let id = "TamagotchiCollectionViewCell"
     

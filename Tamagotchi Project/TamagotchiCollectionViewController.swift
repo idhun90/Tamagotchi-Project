@@ -35,11 +35,13 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         
         // cell label 디자인
         cell.tamagotchiLabel.font = .boldSystemFont(ofSize: 13)
-        cell.tamagotchiLabel.layer.borderWidth = 1
-        cell.tamagotchiLabel.layer.borderColor = UIColor.customFontCornerWidthColor.cgColor
-        cell.tamagotchiLabel.layer.cornerRadius = 3
-        cell.tamagotchiLabel.layer.masksToBounds = true
+
         cell.tamagotchiLabel.textColor = .customFontCornerWidthColor
+        
+        cell.labelBackground.layer.borderWidth = 1
+        cell.labelBackground.layer.borderColor = UIColor.customFontCornerWidthColor.cgColor
+        cell.labelBackground.layer.cornerRadius = 3
+        cell.labelBackground.backgroundColor = .customBackgroundColor
         
         let data = tamagotchiData.tamagotchi[indexPath.row]
         //print(data)

@@ -57,6 +57,7 @@ class TamagotchiMainViewController: UIViewController {
     @IBOutlet weak var lineView2: UIView!
     @IBOutlet weak var verticalLine: UILabel!
     @IBOutlet weak var verticalLine2: UILabel!
+    @IBOutlet weak var labelBackground: UIView!
     
     var level = 1
     var riceCount: Double = 0
@@ -340,6 +341,11 @@ class TamagotchiMainViewController: UIViewController {
         waterTextField.placeholder = "물방울 개수를 입력해주세요."
         
         view.backgroundColor = .customBackgroundColor
+        
+        labelBackground.layer.borderWidth = 1
+        labelBackground.layer.borderColor = UIColor.customFontCornerWidthColor.cgColor
+        labelBackground.layer.cornerRadius = 3
+        labelBackground.backgroundColor = .customBackgroundColor
     }
     
     // 다마고치 말하기

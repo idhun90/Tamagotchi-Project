@@ -19,6 +19,7 @@ class TamagotchiViewController: UIViewController {
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var lineView2: UIView!
+    @IBOutlet weak var labelBackground: UIView!
     
     // 전달 데이터 저장용
     var tamagotchidata: Tamagotchi?
@@ -86,6 +87,11 @@ class TamagotchiViewController: UIViewController {
         introLabel.font = .systemFont(ofSize: 15)
         introLabel.backgroundColor = .customBackgroundColor
         introLabel.numberOfLines = 0
+        
+        labelBackground.layer.borderWidth = 1
+        labelBackground.layer.borderColor = UIColor.customFontCornerWidthColor.cgColor
+        labelBackground.layer.cornerRadius = 3
+        labelBackground.backgroundColor = .customBackgroundColor
         
         
         cancelButton.setTitle("취소", for: .normal)
