@@ -34,20 +34,6 @@ class TamagotchiViewController: UIViewController {
     
     @IBAction func startButtonClicked(_ sender: UIButton) {
         
-        // CollectionView에서 '준비 중이에요' Cell 클릭 시 상세 팝업 화면이 안 뜨도록 구현, 그렇게 해야 사용자가 해야 하는 작업이 줄지 않을까 싶음.
-        //        if nameLabel.text == "준비 중이에요" {
-        //
-        //            let alert = UIAlertController(title: "선택 불가", message: "싹트지 않은 새싹은 선택할 수 없어요.", preferredStyle: .alert)
-        //            let ok = UIAlertAction(title: "확인", style: .default) { _ in
-        //                self.dismiss(animated: true)
-        //            }
-        //
-        //            alert.addAction(ok)
-        //            present(alert, animated: true, completion: nil)
-        
-        //        } else {
-        //        }
-        
         // 시작하기 버튼 클릭 시
         // 1. 선택한 다마고치 정보 그대로 보여줘야 함 (UserDefault)
         // 선택한 다마고치 정보를 어떻게 가져오고 어떻게 저장해야할까?
@@ -107,10 +93,10 @@ class TamagotchiViewController: UIViewController {
         let Tamagotchidata = UserDefaults.standard
         if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil  {
             startButton.setTitle("시작하기", for: .normal)
-            print("저장된 데이터 값이 없습니다")
+            print("'시작하기'이름이 버튼에 적용됨")
         } else {
             startButton.setTitle("변경하기", for: .normal)
-            print("저장된 데이터 값이 있습니다")
+            print("저장된 버튼 값이 있어 '변경하기' 이름이 버튼에 적용됨")
         }
         
         

@@ -13,10 +13,10 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         let Tamagotchidata = UserDefaults.standard
         if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
             title = "다마고치 선택하기"
-            print("저장된 데이터 값이 없습니다")
+            print("저장된 데이터 값이 없어, '다마고치 선택하기'로 설정됩니다.")
         } else {
             title = "다마고치 변경하기"
-            print("저장된 데이터 값이 있습니다")
+            print("저장된 데이터 값이 있어, '다마고치 변경하기'로 설정됩니다.")
         }
         
         collectionViewLayout()
@@ -63,7 +63,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
             
             // 값 전달
             vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]
-//            print(vc.tamagotchidata!)
+            print("전달될 다마고치 이름: \(vc.tamagotchidata!.name)")
             
             vc.modalPresentationStyle = .overFullScreen // 불투명도 제대로 적용하려면 .overFullScreen
             self.present(vc, animated: true, completion: nil)
