@@ -105,7 +105,7 @@ class TamagotchiViewController: UIViewController {
         cancelButton.setTitle("취소", for: .normal)
         
         let Tamagotchidata = UserDefaults.standard
-        if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
+        if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil  {
             startButton.setTitle("시작하기", for: .normal)
             print("저장된 데이터 값이 없습니다")
         } else {

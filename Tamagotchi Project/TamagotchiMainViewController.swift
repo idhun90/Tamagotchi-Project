@@ -1,8 +1,13 @@
-enum UserKeys: String {
+enum UserKeys: String, CaseIterable {
     case defaultName
     case TamagotchiName
     case userSetupName
+    case level
+    case riceCount
+    case waterCount
 }
+
+
 import UIKit
 
 class TamagotchiMainViewController: UIViewController {
@@ -36,10 +41,10 @@ class TamagotchiMainViewController: UIViewController {
         
         let randomName = defaultName.randomElement()!
         
-        title = "\(randomName)님의 다마고치" // 추후 '대장' 리터럴 값이 아닌 동적으로 변화하는 값으로 변경 필요
+        title = "\(randomName)님의 다마고치"
         
         let nameDate = UserDefaults.standard
-        nameDate.set(randomName, forKey: UserKeys.defaultName.rawValue) // 설정화면 '내 이름 바꾸기' 오른쪽 레이블 표시 목적
+        nameDate.set(randomName, forKey: UserKeys.defaultName.rawValue)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(transeferToPreferences))
         navigationController?.navigationBar.tintColor = .customFontCornerWidthColor
@@ -67,6 +72,17 @@ class TamagotchiMainViewController: UIViewController {
             title = "\(UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue)!)님의 다마고치"
             print("사용자가 설정한 이름으로 변경됨")
         }
+        
+        // 저장된 레벨, 밥알, 물방울 개수 데이터 표시
+        let statistics = UserDefaults.standard
+        levelLabel.text = "LV \(statistics.integer(forKey: UserKeys.level.rawValue))"
+        riceCountLabel.text = "밥알 \(Int(statistics.double(forKey: UserKeys.riceCount.rawValue)))개"
+        waterCountLabel.text = "물방울 \(Int(statistics.double(forKey: UserKeys.waterCount.rawValue)))개"
+        
+        // 저장된 레벨, 밥알, 물방울 데이터 할당
+        level = statistics.integer(forKey: UserKeys.level.rawValue)
+        riceCount = statistics.double(forKey: UserKeys.riceCount.rawValue)
+        waterCount = statistics.double(forKey: UserKeys.waterCount.rawValue)
         
     }
     
@@ -100,6 +116,9 @@ class TamagotchiMainViewController: UIViewController {
         sayRandom()
         riceCountLabel.text = "밥알 \(Int(riceCount))개"
         calculateLevelandUpdateImage()
+        
+        let statistics = UserDefaults.standard
+        statistics.set(riceCount, forKey: UserKeys.riceCount.rawValue)
     }
     
     // 물방울 버튼 클릭
@@ -132,6 +151,9 @@ class TamagotchiMainViewController: UIViewController {
         sayRandom()
         waterCountLabel.text = "물방울 \(Int(waterCount))개"
         calculateLevelandUpdateImage()
+        
+        let statistics = UserDefaults.standard
+        statistics.set(waterCount, forKey: UserKeys.waterCount.rawValue)
     }
     
     // 레벨 계산 및 대응하는 이미지
@@ -176,6 +198,9 @@ class TamagotchiMainViewController: UIViewController {
         }
         print("경험치 양 \(levelValue)")
         levelLabel.text = "LV \(level)"
+        
+        let statistics = UserDefaults.standard
+        statistics.set(level, forKey: UserKeys.level.rawValue)
         
     }
     
