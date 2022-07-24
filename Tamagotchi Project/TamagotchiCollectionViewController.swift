@@ -80,7 +80,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
     func collectionViewLayout() {
         
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 4
+        let spacing: CGFloat = 5
         let itemCount: CGFloat = 3
         let width = (UIScreen.main.bounds.width - (spacing * (itemCount + 1))) / 3
         
