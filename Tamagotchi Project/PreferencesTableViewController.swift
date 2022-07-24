@@ -107,13 +107,13 @@ class PreferencesTableViewController: UITableViewController {
                 for i in 0...UserKeys.allCases.count - 1 {
                     selectedData.removeObject(forKey: UserKeys.allCases[i].rawValue)
                 }
-//                selectedData.removeObject(forKey: UserKeys.TamagotchiName.rawValue)
-//                selectedData.removeObject(forKey: UserKeys.defaultName.rawValue)
-//                selectedData.removeObject(forKey: UserKeys.userSetupName.rawValue)
-//                selectedData.removeObject(forKey: UserKeys.level.rawValue)
-//                selectedData.removeObject(forKey: UserKeys.riceCount.rawValue)
-//                selectedData.removeObject(forKey: UserKeys.waterCount.rawValue)
-//
+                //selectedData.removeObject(forKey: UserKeys.TamagotchiName.rawValue)
+                //selectedData.removeObject(forKey: UserKeys.defaultName.rawValue)
+                //selectedData.removeObject(forKey: UserKeys.userSetupName.rawValue)
+                //selectedData.removeObject(forKey: UserKeys.level.rawValue)
+                //selectedData.removeObject(forKey: UserKeys.riceCount.rawValue)
+                //selectedData.removeObject(forKey: UserKeys.waterCount.rawValue)
+                //
                 print("모든 데이터가 초기화되었습니다.")
                 
                 let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene

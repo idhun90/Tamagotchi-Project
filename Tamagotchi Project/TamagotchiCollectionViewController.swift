@@ -22,10 +22,6 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         collectionViewLayout()
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         tamagotchiData.tamagotchi.count
@@ -46,7 +42,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         cell.tamagotchiLabel.textColor = .customFontCornerWidthColor
         
         let data = tamagotchiData.tamagotchi[indexPath.row]
-//        print(data)
+        //print(data)
         cell.configCell(data: data)
         
         return cell
@@ -73,11 +69,10 @@ class TamagotchiCollectionViewController: UICollectionViewController {
             let ok = UIAlertAction(title: "확인", style: .default) { _ in
                 self.dismiss(animated: true)
             }
-            alert.addAction(ok)
             
+            alert.addAction(ok)
             present(alert, animated: true, completion: nil)
         }
-
     }
     
     func collectionViewLayout() {

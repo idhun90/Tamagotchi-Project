@@ -55,13 +55,15 @@ class TamagotchiMainViewController: UIViewController {
     @IBOutlet weak var waterAddButton: UIButton!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var lineView2: UIView!
+    @IBOutlet weak var verticalLine: UILabel!
+    @IBOutlet weak var verticalLine2: UILabel!
     
     var level = 1
     var riceCount: Double = 0
     var waterCount: Double = 0
     var say: [String] = ["구조체 활용 더 공부하세요", "값 전달 더 공부하세요", "엔트리 포인트 코드 더 구현 공부하세요", "열거형도 더 하세요", "잠은 죽어서 잘 수 있어요"]
     var sayLv10: [String] = ["배불러요", "꺼억", "더 못 먹겠어요"]
-    let defaultName = ["대장", "스폰지밥", "고래밥", "칙촉", "돌고래", "비둘기", "갑오징어"]
+    let defaultName = ["스폰지밥", "고래밥", "칙촉", "돌고래", "비둘기", "갑오징어"]
     var imageList:[String] = []
     var levelMachingToImage:[Int: Int] = [1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 10: 8]
     
@@ -92,7 +94,7 @@ class TamagotchiMainViewController: UIViewController {
         
         designUI() // 기본 UI 구성
         loadData() // 저장된 다마고치 이름 가져오기
-        matchingImage() // 저장된 다마고치 이름으로 매칭되는 이미지 가져오기
+        matchingImage() // 저장된 다마고치 이름과 매칭되는 이미지 리스트
         
     }
     
@@ -201,7 +203,7 @@ class TamagotchiMainViewController: UIViewController {
         statistics.set(waterCount, forKey: UserKeys.waterCount.rawValue)
     }
     
-    // 레벨 계산 및 대응하는 이미지
+    // 레벨 계산 및 대응하는 이미지 표시
     func calculateLevelandUpdateImage() {
         
         let valueDouble = riceCount/5 + waterCount/2
@@ -244,7 +246,7 @@ class TamagotchiMainViewController: UIViewController {
         print("경험치 양 \(levelValue)")
         levelLabel.text = "LV \(level)"
         
-        
+        // 레벨 값 저장
         let statistics = UserDefaults.standard
         statistics.set(level, forKey: UserKeys.level.rawValue)
         
@@ -272,6 +274,7 @@ class TamagotchiMainViewController: UIViewController {
         
         characterNameLabel.text = name
     }
+    
     // 저장된 다마고치 이름에 따라 대응되는 이미지 리스트 할당
     func matchingImage() {
         let selectedData = UserDefaults.standard
@@ -293,7 +296,7 @@ class TamagotchiMainViewController: UIViewController {
             print("매칭 이미지 오류 발생")
         }
         print(level)
-        //        characterImageView.image = UIImage(named: imageList[levelAndImage[level]!])
+        //characterImageView.image = UIImage(named: imageList[levelAndImage[level]!])
     }
     
     
@@ -329,6 +332,7 @@ class TamagotchiMainViewController: UIViewController {
         
         lineView.backgroundColor = .customFontCornerWidthColor
         lineView2.backgroundColor = .customFontCornerWidthColor
+
         
         riceTextField.keyboardType = .numberPad
         waterTextField.keyboardType = .numberPad
@@ -338,6 +342,7 @@ class TamagotchiMainViewController: UIViewController {
         view.backgroundColor = .customBackgroundColor
     }
     
+    // 다마고치 말하기
     func sayRandom() {
         if level == 10 {
             messageLabel.text = sayLv10.randomElement()
@@ -346,7 +351,7 @@ class TamagotchiMainViewController: UIViewController {
         }
     }
     
-    // 숫자 키패드 입력 후 화면 터치 시 키보드 내림
+    // 숫자 키패드 입력 후 화면 터치 시 키보드 내림, 탭 제스처
     @IBAction func returnKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }

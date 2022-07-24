@@ -260,6 +260,8 @@
                         <outlet property="riceAddButton" destination="K2R-fU-Rf0" id="uIm-zb-FM2"/>
                         <outlet property="riceCountLabel" destination="mvw-WP-Q0b" id="bF2-jh-A37"/>
                         <outlet property="riceTextField" destination="Ppq-Bp-n3T" id="AAV-oG-cWK"/>
+                        <outlet property="verticalLine" destination="388-wK-CiP" id="fib-m4-JFC"/>
+                        <outlet property="verticalLine2" destination="iti-Tq-IVg" id="qHH-ow-Gtu"/>
                         <outlet property="waterAddButton" destination="5Od-FY-Zvd" id="Ym3-Yw-Pt4"/>
                         <outlet property="waterCountLabel" destination="GQa-UA-RiB" id="bub-H2-0Im"/>
                         <outlet property="waterTextField" destination="KML-lH-aAr" id="jyT-Zy-4q1"/>
