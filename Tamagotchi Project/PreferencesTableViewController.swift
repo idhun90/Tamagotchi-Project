@@ -106,7 +106,7 @@ class PreferencesTableViewController: UITableViewController {
                 selectedData.removeObject(forKey: UserKeys.TamagotchiName.rawValue)
                 selectedData.removeObject(forKey: UserKeys.defaultName.rawValue)
                 selectedData.removeObject(forKey: UserKeys.userSetupName.rawValue)
-                print("모든 데이터가 초기화 완료되었습니다.")
+                print("모든 데이터가 초기화되었습니다.")
                 
                 let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowsScene?.delegate as? SceneDelegate

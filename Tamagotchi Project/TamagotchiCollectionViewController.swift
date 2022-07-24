@@ -8,9 +8,20 @@ class TamagotchiCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("선택화면 viewDidLoad")
         
-        title = "다마고치 선택하기"
+        let Tamagotchidata = UserDefaults.standard
+        if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
+            title = "다마고치 선택하기"
+        } else {
+            title = "다마고치 변경하기"
+        }
+        
         collectionViewLayout()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
     }
 
