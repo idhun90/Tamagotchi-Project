@@ -72,7 +72,7 @@ class TamagotchiMainViewController: UIViewController {
         super.viewDidLoad()
         print("메인화면 viewDidLoad 작동됨")
         
-        // 다마고치 변경시 viewDidLoad()가 다시 호출됨. -> 사용자 설정 이름은 문제 없으나, 기본 제공 이름이 랜덤으로 또 바뀌는 현상 발견
+        // 다마고치 변경시 viewDidLoad()가 다시 호출됨. -> 사용자 설정한 이름이 있을 땐 문제 없으나, 없을 경우 기본 제공 이름이 제공되는데 새로운 화면이 나타날 때마다 이름이 고정적이지 않고 랜덤으로 바뀌는 문제 발생. 따라서 조건문 추가
         if UserDefaults.standard.string(forKey: UserKeys.defaultName.rawValue) == nil {
             // 최초 실행시 타이틀 제목
             let randomName = defaultName.randomElement()!
@@ -89,6 +89,7 @@ class TamagotchiMainViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .customFontCornerWidthColor
         
         
+        // 레벨, 밥알, 물방울 개수 레이블은 화면이 바뀔 때마다 갱신되야 함으로 viewWillAppear에 작성함
         //        levelLabel.text = "LV \(level)"
         //        riceCountLabel.text = "밥알 \(Int(riceCount))개"
         //        waterCountLabel.text = "물방울 \(Int(waterCount))개"
@@ -97,12 +98,16 @@ class TamagotchiMainViewController: UIViewController {
         loadData() // 저장된 다마고치 이름 가져오기
         matchingImage() // 저장된 다마고치 이름과 매칭되는 이미지 리스트
         
+        // 사용자 이름에 따라 말풍선이 제대로 갱신되었는지 체크용 -> viewWillAppear에서 갱신된 이름 체크 확인됨.
+        //        print("viewdidload에서 실행됨: \(say)")
+        //        print("viewdidload에서 실행됨: \(sayLv10)")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         print("메인화면 viewWillAppear 작동됨")
-        sayRandom() // 아무말하기
+        
         
         let nameData = UserDefaults.standard
         // 사용자가 이름을 설정을 하지 않았을 때
@@ -129,6 +134,12 @@ class TamagotchiMainViewController: UIViewController {
         
         // 저장된 레벨 값을 가져와 대응되는 이미지 딕셔너리 키 값으로 설정하기
         characterImageView.image = UIImage(named: imageList[levelMachingToImage[level]!])
+        
+        
+        sayRandom() // 아무말하기
+        // 사용자 이름에 따라 말풍선이 제대로 갱신되었는지 체크용
+        print("viewWillAppear에서 실행됨: \(say)")
+        print("viewWillAppear에서 실행됨: \(sayLv10)")
         
         
         
@@ -300,7 +311,35 @@ class TamagotchiMainViewController: UIViewController {
         //characterImageView.image = UIImage(named: imageList[levelAndImage[level]!])
     }
     
-    
+    // 다마고치 말하기
+    func sayRandom() {
+        let userSetupName = UserDefaults.standard
+        
+        if level == 10 { // 이름 저장 값이 있을 때 해당 이름 말풍선 구문에 추가해서 보여주기
+            
+            if userSetupName.string(forKey: UserKeys.userSetupName.rawValue) == nil {
+                
+                sayLv10 = ["배불러요", "꺼억", "더 못 먹겠어요", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님 이름을 설정할 수 있어요.", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님 배가 터질려고 그래요"]
+                print("기본 이름이 말풍선에 표기됩니다.")
+                messageLabel.text = sayLv10.randomElement()
+            } else {
+                sayLv10 = ["배불러요", "꺼억", "더 못 먹겠어요", "\(userSetupName.string(forKey: UserKeys.userSetupName.rawValue) ?? "대장")님 이름을 설정할 수 있어요.", "\(userSetupName.string(forKey: UserKeys.userSetupName.rawValue) ?? "대장")님 배가 터질려고 그래요"]
+                print("사용자가 설정한 이름이 말풍선에 표기됩니다.")
+                messageLabel.text = sayLv10.randomElement()
+            }
+        } else {
+            
+            if userSetupName.string(forKey: UserKeys.userSetupName.rawValue) == nil {
+                say = ["구조체 활용 더 공부하세요", "값 전달 더 공부하세요", "엔트리 포인트 코드 더 구현 공부하세요", "열거형도 더 하세요", "잠은 죽어서 잘 수 있어요", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님 이름을 설정할 수 있어요." ]
+                print("기본 이름이 말풍선에 표기됩니다.")
+                messageLabel.text = say.randomElement()
+            } else {
+                say = ["구조체 활용 더 공부하세요", "값 전달 더 공부하세요", "엔트리 포인트 코드 더 구현 공부하세요", "열거형도 더 하세요", "잠은 죽어서 잘 수 있어요", "\(userSetupName.string(forKey: UserKeys.userSetupName.rawValue)!)님 화이팅입니다." ]
+                print("사용자가 설정한 이름이 말풍선에 표기됩니다.")
+                messageLabel.text = say.randomElement()
+            }
+        }
+    }
     
     func designUI() {
         
@@ -333,7 +372,7 @@ class TamagotchiMainViewController: UIViewController {
         
         lineView.backgroundColor = .customFontCornerWidthColor
         lineView2.backgroundColor = .customFontCornerWidthColor
-
+        
         
         riceTextField.keyboardType = .numberPad
         waterTextField.keyboardType = .numberPad
@@ -347,15 +386,6 @@ class TamagotchiMainViewController: UIViewController {
         labelBackground.layer.borderColor = UIColor.customFontCornerWidthColor.cgColor
         labelBackground.layer.cornerRadius = 3
         labelBackground.backgroundColor = .customBackgroundColor
-    }
-    
-    // 다마고치 말하기
-    func sayRandom() {
-        if level == 10 {
-            messageLabel.text = sayLv10.randomElement()
-        } else {
-            messageLabel.text = say.randomElement()
-        }
     }
     
     // 숫자 키패드 입력 후 화면 터치 시 키보드 내림, 탭 제스처
