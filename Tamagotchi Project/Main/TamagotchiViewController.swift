@@ -42,7 +42,7 @@ class TamagotchiViewController: UIViewController {
         let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowsScene?.delegate as? SceneDelegate
         
-        let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
+        let sb = UIStoryboard(name: SafeName.storyboard, bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.identifier) as! TamagotchiMainViewController
         
         sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)

@@ -110,7 +110,7 @@ class TamagotchiMainViewController: UIViewController {
         let nameData = UserDefaults.standard
         // 사용자가 이름을 설정을 하지 않았을 때
         if UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue) ==  nil {
-            title = "\(nameData.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님의 다마고치"
+            title = "\(nameData.string(forKey: UserKeys.defaultName.rawValue) ?? SafeName.textName)님의 다마고치"
             print("기본 제공 이름으로 변경됨")
         } else {
             title = "\(UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue)!)님의 다마고치"
@@ -266,7 +266,7 @@ class TamagotchiMainViewController: UIViewController {
     // 설정 화면 이동
     @objc func transeferToPreferences() {
         
-        let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
+        let sb = UIStoryboard(name: SafeName.storyboard, bundle: nil)
         let vs = sb.instantiateViewController(withIdentifier: PreferencesTableViewController.identifier) as! PreferencesTableViewController
         
         navigationItem.backButtonTitle = "" // 다음 화면 전환 시 백버튼 타이틀 없애기
@@ -317,18 +317,18 @@ class TamagotchiMainViewController: UIViewController {
             
             if userSetupName.string(forKey: UserKeys.userSetupName.rawValue) == nil {
                 
-                sayLv10 = ["배불러요", "꺼억", "더 못 먹겠어요", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님 이름을 설정할 수 있어요.", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님 배가 터질려고 그래요"]
+                sayLv10 = ["배불러요", "꺼억", "더 못 먹겠어요", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? SafeName.textName)님 이름을 설정할 수 있어요.", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? SafeName.textName)님 배가 터질려고 그래요"]
                 print("기본 이름이 말풍선에 표기됩니다.")
                 messageLabel.text = sayLv10.randomElement()
             } else {
-                sayLv10 = ["배불러요", "꺼억", "더 못 먹겠어요", "\(userSetupName.string(forKey: UserKeys.userSetupName.rawValue) ?? "대장")님 이름을 설정할 수 있어요.", "\(userSetupName.string(forKey: UserKeys.userSetupName.rawValue) ?? "대장")님 배가 터질려고 그래요"]
+                sayLv10 = ["배불러요", "꺼억", "더 못 먹겠어요", "\(userSetupName.string(forKey: UserKeys.userSetupName.rawValue) ?? SafeName.textName)님 이름을 설정할 수 있어요.", "\(userSetupName.string(forKey: UserKeys.userSetupName.rawValue) ?? SafeName.textName)님 배가 터질려고 그래요"]
                 print("사용자가 설정한 이름이 말풍선에 표기됩니다.")
                 messageLabel.text = sayLv10.randomElement()
             }
         } else {
             
             if userSetupName.string(forKey: UserKeys.userSetupName.rawValue) == nil {
-                say = ["구조체 활용 더 공부하세요", "값 전달 더 공부하세요", "엔트리 포인트 코드 더 구현 공부하세요", "열거형도 더 하세요", "잠은 죽어서 잘 수 있어요", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님 이름을 설정할 수 있어요." ]
+                say = ["구조체 활용 더 공부하세요", "값 전달 더 공부하세요", "엔트리 포인트 코드 더 구현 공부하세요", "열거형도 더 하세요", "잠은 죽어서 잘 수 있어요", "\(userSetupName.string(forKey: UserKeys.defaultName.rawValue) ?? SafeName.textName)님 이름을 설정할 수 있어요." ]
                 print("기본 이름이 말풍선에 표기됩니다.")
                 messageLabel.text = say.randomElement()
             } else {

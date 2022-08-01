@@ -68,6 +68,11 @@ import Foundation
 */
 
 // 화면 전환 및 SceneDelegate에 사용된 "Tamagotchi" 문자열 대체
-enum StoryboardName {
+// 사용자 이름 예외 처리용 "대장" 문자열 대체
+// "다마고치 선택하기", "다마고치 변경하기" 문자열 대체
+enum SafeName {
     static let storyboard = "Tamagotchi"
+    static let textName = "대장"
+    static let select = "다마고치 선택하기"
+    static let change = "다마고치 변경하기"
 }

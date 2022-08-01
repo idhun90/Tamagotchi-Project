@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14A34E28289830B700FFD440 /* IdentityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A34E27289830B700FFD440 /* IdentityProtocol.swift */; };
-		14A34E2B28983ADC00FFD440 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A34E2A28983ADC00FFD440 /* StoryboardName.swift */; };
+		14A34E2B28983ADC00FFD440 /* SafeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A34E2A28983ADC00FFD440 /* SafeName.swift */; };
 		14AFFCD7288BAB0E00FEF4EB /* PreferencesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AFFCD6288BAB0E00FEF4EB /* PreferencesTableViewController.swift */; };
 		14AFFCD9288BACC200FEF4EB /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AFFCD8288BACC200FEF4EB /* PreferencesTableViewCell.swift */; };
 		14CCD368288D2ABC00B2D06C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14CCD367288D2ABC00B2D06C /* IQKeyboardManagerSwift */; };
@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		14A34E27289830B700FFD440 /* IdentityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityProtocol.swift; sourceTree = "<group>"; };
-		14A34E2A28983ADC00FFD440 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
+		14A34E2A28983ADC00FFD440 /* SafeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeName.swift; sourceTree = "<group>"; };
 		14AFFCD6288BAB0E00FEF4EB /* PreferencesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewController.swift; sourceTree = "<group>"; };
 		14AFFCD8288BACC200FEF4EB /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
 		14F94A9E288A70B000956ADE /* Tamagotchi Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tamagotchi Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,7 +118,7 @@
 		14A34E2928983ABF00FFD440 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				14A34E2A28983ADC00FFD440 /* StoryboardName.swift */,
+				14A34E2A28983ADC00FFD440 /* SafeName.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 				14F94AA2288A70B000956ADE /* AppDelegate.swift in Sources */,
 				14F94AB8288A8EAC00956ADE /* UIColor + Extention.swift in Sources */,
 				14F94AC6288AC44100956ADE /* TamagotchiInfo.swift in Sources */,
-				14A34E2B28983ADC00FFD440 /* StoryboardName.swift in Sources */,
+				14A34E2B28983ADC00FFD440 /* SafeName.swift in Sources */,
 				14F94AC2288A947600956ADE /* TamagotchiCollectionViewCell.swift in Sources */,
 				14A34E28289830B700FFD440 /* IdentityProtocol.swift in Sources */,
 				14F94AA4288A70B000956ADE /* SceneDelegate.swift in Sources */,

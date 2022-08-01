@@ -14,14 +14,14 @@ class ChangeNameViewController: UIViewController {
         let nameData = UserDefaults.standard
         // 사용자가 이름을 설정을 하지 않았을 때
         if UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue) ==  nil {
-            title = "\(nameData.string(forKey: UserKeys.defaultName.rawValue) ?? "대장님")님 새로운 이름 정하기"
-            nameTextField.text = nameData.string(forKey: UserKeys.defaultName.rawValue) ?? "대장"
-            nameTextField.placeholder = "\(nameData.string(forKey: UserKeys.defaultName.rawValue) ?? "대장")님 새로운 이름을 설정해주세요"
+            title = "\(nameData.string(forKey: UserKeys.defaultName.rawValue) ?? SafeName.textName)님 새로운 이름 정하기"
+            nameTextField.text = nameData.string(forKey: UserKeys.defaultName.rawValue) ?? SafeName.textName
+            nameTextField.placeholder = "\(nameData.string(forKey: UserKeys.defaultName.rawValue) ?? SafeName.textName)님 새로운 이름을 설정해주세요"
             print("기본 제공 이름으로 갱신됨")
         } else {
             title = "\(UserDefaults.standard.string(forKey: UserKeys.userSetupName.rawValue)!)님 새로운 이름 정하기"
-            nameTextField.text = nameData.string(forKey: UserKeys.userSetupName.rawValue) ?? "대장"
-            nameTextField.placeholder = "\(nameData.string(forKey: UserKeys.userSetupName.rawValue) ?? "대장")님 새로운 이름을 설정해주세요"
+            nameTextField.text = nameData.string(forKey: UserKeys.userSetupName.rawValue) ?? SafeName.textName
+            nameTextField.placeholder = "\(nameData.string(forKey: UserKeys.userSetupName.rawValue) ?? SafeName.textName)님 새로운 이름을 설정해주세요"
             print("사용자가 설정한 이름으로 갱신됨")
         }
         

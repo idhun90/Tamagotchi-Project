@@ -10,10 +10,10 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         
         let Tamagotchidata = UserDefaults.standard
         if Tamagotchidata.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
-            title = "다마고치 선택하기"
+            title = SafeName.select
             print("저장된 데이터 값이 없어, '다마고치 선택하기'로 설정됩니다.")
         } else {
-            title = "다마고치 변경하기"
+            title = SafeName.change
             print("저장된 데이터 값이 있어, '다마고치 변경하기'로 설정됩니다.")
         }
         
@@ -54,7 +54,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         
         if indexPath == [0, 0] || indexPath == [0, 1] || indexPath == [0, 2] {
             
-            let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
+            let sb = UIStoryboard(name: SafeName.storyboard, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.identifier) as! TamagotchiViewController
             
             // 값 전달
