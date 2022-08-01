@@ -19,6 +19,9 @@ import Foundation
  
  방법 2. 구조체 + 타입 저장 프로퍼티
  struct StoryboardName {
+ 
+    // 개선 방안
+    // private init() 'private' 키워드를 사용하면 접근 권한이 높기 때문에 오직 작성된 이 곳에서만 초기화를 할 수 있다고 한다.
     static let main = "Main"
     static let search = "Search"
     static let setting = "Setting"
@@ -29,6 +32,9 @@ import Foundation
  
  단점
  - 다른 곳에서 실수에 의한 불필요한 인스턴스 생성 문제 발생 가능성 有
+ 
+ 개선 방안
+ - 접근제어를 통해 다른 파일에서 인스턴스 생성 방지
 
  -------------------------------------------------------------------
  
