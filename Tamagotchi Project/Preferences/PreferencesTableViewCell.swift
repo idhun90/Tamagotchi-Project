@@ -3,8 +3,6 @@ import UIKit
 
 class PreferencesTableViewCell: UITableViewCell {
 
-    static let id = "PreferencesTableViewCell"
-    
     @IBOutlet weak var preferencesImageView: UIImageView!
     @IBOutlet weak var preferencesNameLabel: UILabel!
     @IBOutlet weak var rightNameLabel: UILabel!

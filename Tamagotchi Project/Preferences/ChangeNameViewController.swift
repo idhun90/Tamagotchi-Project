@@ -2,9 +2,7 @@
 import UIKit
 
 class ChangeNameViewController: UIViewController {
-    
-    static let id = "ChangeNameViewController"
-    
+
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var buttomLine: UIView!
     

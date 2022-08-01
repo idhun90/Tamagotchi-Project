@@ -1,9 +1,7 @@
 import UIKit
 
 class TamagotchiCollectionViewController: UICollectionViewController {
-    
-    static let id = "TamagotchiCollectionViewController"
-    
+
     var tamagotchiData = TamagotchiInfo()
     
     override func viewDidLoad() {
@@ -29,7 +27,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.id, for: indexPath) as! TamagotchiCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.identifier, for: indexPath) as! TamagotchiCollectionViewCell
         
         cell.backgroundColor = .customBackgroundColor
         
@@ -57,7 +55,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         if indexPath == [0, 0] || indexPath == [0, 1] || indexPath == [0, 2] {
             
             let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.id) as! TamagotchiViewController
+            let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.identifier) as! TamagotchiViewController
             
             // 값 전달
             vc.tamagotchidata = tamagotchiData.tamagotchi[indexPath.row]

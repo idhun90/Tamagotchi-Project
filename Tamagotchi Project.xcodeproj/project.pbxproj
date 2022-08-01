@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14A34E28289830B700FFD440 /* IdentityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A34E27289830B700FFD440 /* IdentityProtocol.swift */; };
 		14AFFCD7288BAB0E00FEF4EB /* PreferencesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AFFCD6288BAB0E00FEF4EB /* PreferencesTableViewController.swift */; };
 		14AFFCD9288BACC200FEF4EB /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AFFCD8288BACC200FEF4EB /* PreferencesTableViewCell.swift */; };
 		14CCD368288D2ABC00B2D06C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14CCD367288D2ABC00B2D06C /* IQKeyboardManagerSwift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14A34E27289830B700FFD440 /* IdentityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityProtocol.swift; sourceTree = "<group>"; };
 		14AFFCD6288BAB0E00FEF4EB /* PreferencesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewController.swift; sourceTree = "<group>"; };
 		14AFFCD8288BACC200FEF4EB /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
 		14F94A9E288A70B000956ADE /* Tamagotchi Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tamagotchi Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14A34E2128982C0C00FFD440 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				14F94AB7288A8EAC00956ADE /* UIColor + Extention.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		14A34E2228982C9A00FFD440 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				14F94AC3288AC23A00956ADE /* Tamagotchi.swift */,
+				14F94AC5288AC44100956ADE /* TamagotchiInfo.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		14A34E2328982D2100FFD440 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				14AFFCD6288BAB0E00FEF4EB /* PreferencesTableViewController.swift */,
+				14AFFCD8288BACC200FEF4EB /* PreferencesTableViewCell.swift */,
+				14FD658B288BBEC6009E2A90 /* ChangeNameViewController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		14A34E2428982D7700FFD440 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				14F94AB9288A900D00956ADE /* TamagotchiCollectionViewController.swift */,
+				14F94AC1288A947600956ADE /* TamagotchiCollectionViewCell.swift */,
+				14F94ABF288A915000956ADE /* TamagotchiViewController.swift */,
+				14F94AC7288AF8E200956ADE /* TamagotchiMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		14A34E2528982F2500FFD440 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				14F94ABD288A90AE00956ADE /* Tamagotchi.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		14A34E262898307500FFD440 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				14A34E27289830B700FFD440 /* IdentityProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		14F94A95288A70B000956ADE = {
 			isa = PBXGroup;
 			children = (
@@ -76,19 +132,14 @@
 		14F94AA0288A70B000956ADE /* Tamagotchi Project */ = {
 			isa = PBXGroup;
 			children = (
+				14A34E262898307500FFD440 /* Protocol */,
+				14A34E2128982C0C00FFD440 /* Extention */,
+				14A34E2228982C9A00FFD440 /* Data */,
+				14A34E2328982D2100FFD440 /* Preferences */,
+				14A34E2428982D7700FFD440 /* Main */,
+				14A34E2528982F2500FFD440 /* StoryBoard */,
 				14F94AA1288A70B000956ADE /* AppDelegate.swift */,
 				14F94AA3288A70B000956ADE /* SceneDelegate.swift */,
-				14F94AC3288AC23A00956ADE /* Tamagotchi.swift */,
-				14F94AC5288AC44100956ADE /* TamagotchiInfo.swift */,
-				14F94ABD288A90AE00956ADE /* Tamagotchi.storyboard */,
-				14F94AB9288A900D00956ADE /* TamagotchiCollectionViewController.swift */,
-				14F94AC1288A947600956ADE /* TamagotchiCollectionViewCell.swift */,
-				14F94ABF288A915000956ADE /* TamagotchiViewController.swift */,
-				14F94AC7288AF8E200956ADE /* TamagotchiMainViewController.swift */,
-				14AFFCD6288BAB0E00FEF4EB /* PreferencesTableViewController.swift */,
-				14AFFCD8288BACC200FEF4EB /* PreferencesTableViewCell.swift */,
-				14FD658B288BBEC6009E2A90 /* ChangeNameViewController.swift */,
-				14F94AB7288A8EAC00956ADE /* UIColor + Extention.swift */,
 				14F94AAA288A70B000956ADE /* Assets.xcassets */,
 				14F94AAC288A70B000956ADE /* LaunchScreen.storyboard */,
 				14F94AAF288A70B000956ADE /* Info.plist */,
@@ -183,6 +234,7 @@
 				14F94AB8288A8EAC00956ADE /* UIColor + Extention.swift in Sources */,
 				14F94AC6288AC44100956ADE /* TamagotchiInfo.swift in Sources */,
 				14F94AC2288A947600956ADE /* TamagotchiCollectionViewCell.swift in Sources */,
+				14A34E28289830B700FFD440 /* IdentityProtocol.swift in Sources */,
 				14F94AA4288A70B000956ADE /* SceneDelegate.swift in Sources */,
 				14F94AC0288A915000956ADE /* TamagotchiViewController.swift in Sources */,
 			);

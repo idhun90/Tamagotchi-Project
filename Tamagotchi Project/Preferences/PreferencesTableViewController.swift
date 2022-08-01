@@ -1,16 +1,7 @@
-//enum PreferencesList: Int, CaseIterable {
-//    case preferencesName, image
-//
-//    switch self {
-//    case .preferencesName
-//    }
-//}
 import UIKit
 
 class PreferencesTableViewController: UITableViewController {
-    
-    static let id = "PreferencesTableViewController"
-    
+ 
     let preferenceName = ["내 이름 설정하기", "다마고치 변경하기", "데이터 초기화"]
     let preferenceImage = ["pencil", "moon.fill", "arrow.clockwise"]
     
@@ -38,7 +29,7 @@ class PreferencesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PreferencesTableViewCell.id, for: indexPath) as? PreferencesTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PreferencesTableViewCell.identifier, for: indexPath) as? PreferencesTableViewCell else { return UITableViewCell()}
         
         // UI
         cell.backgroundColor = .customBackgroundColor
@@ -80,7 +71,7 @@ class PreferencesTableViewController: UITableViewController {
         if indexPath.row == 0 {
             
             let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: ChangeNameViewController.id) as! ChangeNameViewController
+            let vc = sb.instantiateViewController(withIdentifier: ChangeNameViewController.identifier) as! ChangeNameViewController
             
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -89,7 +80,7 @@ class PreferencesTableViewController: UITableViewController {
         if indexPath.row == 1 {
             
             let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.id) as! TamagotchiCollectionViewController
+            let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.identifier) as! TamagotchiCollectionViewController
             
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -99,7 +90,7 @@ class PreferencesTableViewController: UITableViewController {
         if indexPath.row == 2 {
             // 알람 추가
             let alert = UIAlertController(title: "데이터 초기화", message: "모든 데이터가 삭제됩니다.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
+            let ok = UIAlertAction(title: "초기화", style: .destructive) { _ in
                 
                 // 저장된 데이터 모두 삭제
                 let selectedData = UserDefaults.standard
@@ -107,20 +98,13 @@ class PreferencesTableViewController: UITableViewController {
                 for i in 0...UserKeys.allCases.count - 1 {
                     selectedData.removeObject(forKey: UserKeys.allCases[i].rawValue)
                 }
-                //selectedData.removeObject(forKey: UserKeys.TamagotchiName.rawValue)
-                //selectedData.removeObject(forKey: UserKeys.defaultName.rawValue)
-                //selectedData.removeObject(forKey: UserKeys.userSetupName.rawValue)
-                //selectedData.removeObject(forKey: UserKeys.level.rawValue)
-                //selectedData.removeObject(forKey: UserKeys.riceCount.rawValue)
-                //selectedData.removeObject(forKey: UserKeys.waterCount.rawValue)
-                //
                 print("모든 데이터가 초기화되었습니다.")
                 
                 let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowsScene?.delegate as? SceneDelegate
                 
                 let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.id) as! TamagotchiCollectionViewController
+                let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.identifier) as! TamagotchiCollectionViewController
                 
                 sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
                 sceneDelegate?.window?.makeKeyAndVisible()

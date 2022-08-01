@@ -40,8 +40,6 @@ import UIKit
 
 class TamagotchiMainViewController: UIViewController {
     
-    static let id = "TamagotchiMainViewController"
-    
     @IBOutlet weak var messageImageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var characterImageView: UIImageView!
@@ -269,7 +267,7 @@ class TamagotchiMainViewController: UIViewController {
     @objc func transeferToPreferences() {
         
         let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-        let vs = sb.instantiateViewController(withIdentifier: PreferencesTableViewController.id) as! PreferencesTableViewController
+        let vs = sb.instantiateViewController(withIdentifier: PreferencesTableViewController.identifier) as! PreferencesTableViewController
         
         navigationItem.backButtonTitle = "" // 다음 화면 전환 시 백버튼 타이틀 없애기
         self.navigationController?.pushViewController(vs, animated: true)

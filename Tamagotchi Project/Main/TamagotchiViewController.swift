@@ -1,15 +1,6 @@
-//
-//  TamagotchiViewController.swift
-//  Tamagotchi Project
-//
-//  Created by 이도헌 on 2022/07/22.
-//
-
 import UIKit
 
 class TamagotchiViewController: UIViewController {
-    
-    static let id = "TamagotchiViewController"
     
     @IBOutlet weak var tamagotchiImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -52,7 +43,7 @@ class TamagotchiViewController: UIViewController {
         let sceneDelegate = windowsScene?.delegate as? SceneDelegate
         
         let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.id) as! TamagotchiMainViewController
+        let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.identifier) as! TamagotchiMainViewController
         
         sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.makeKeyAndVisible()
@@ -123,6 +114,8 @@ class TamagotchiViewController: UIViewController {
         
         // .layer.opacity로 구현 시 UI 요소까지 모두 불투명도 조절됨
         // 스토리보드로 우선 구현
+        
+        view.backgroundColor = .black.withAlphaComponent(0.4)
         
     }
 }

@@ -17,14 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserDefaults.standard.string(forKey: UserKeys.TamagotchiName.rawValue) == nil {
             
             let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.id) as! TamagotchiCollectionViewController
+            let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.identifier) as! TamagotchiCollectionViewController
             
             window?.rootViewController = UINavigationController(rootViewController: vc)
             
         } else {
             
             let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.id) as! TamagotchiMainViewController
+            let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.identifier) as! TamagotchiMainViewController
             
             window?.rootViewController = UINavigationController(rootViewController: vc)
         }
