@@ -54,7 +54,7 @@ class TamagotchiCollectionViewController: UICollectionViewController {
         
         if indexPath == [0, 0] || indexPath == [0, 1] || indexPath == [0, 2] {
             
-            let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+            let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: TamagotchiViewController.identifier) as! TamagotchiViewController
             
             // 값 전달

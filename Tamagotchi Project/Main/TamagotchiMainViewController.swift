@@ -266,7 +266,7 @@ class TamagotchiMainViewController: UIViewController {
     // 설정 화면 이동
     @objc func transeferToPreferences() {
         
-        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
         let vs = sb.instantiateViewController(withIdentifier: PreferencesTableViewController.identifier) as! PreferencesTableViewController
         
         navigationItem.backButtonTitle = "" // 다음 화면 전환 시 백버튼 타이틀 없애기

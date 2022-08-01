@@ -42,7 +42,7 @@ class TamagotchiViewController: UIViewController {
         let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowsScene?.delegate as? SceneDelegate
         
-        let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+        let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: TamagotchiMainViewController.identifier) as! TamagotchiMainViewController
         
         sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
@@ -97,11 +97,11 @@ class TamagotchiViewController: UIViewController {
         }
         
         
-        for i in [cancelButton, startButton] {
-            if let i = i {
-                i.titleLabel?.font = .boldSystemFont(ofSize: 15)
-                i.setTitleColor(.customFontCornerWidthColor, for: .normal)
-                i.backgroundColor = .customBackgroundColor
+        for button in [cancelButton, startButton] {
+            if let button = button {
+                button.titleLabel?.font = .boldSystemFont(ofSize: 15)
+                button.setTitleColor(.customFontCornerWidthColor, for: .normal)
+                button.backgroundColor = .customBackgroundColor
                 //i.setTitleColor(.red, for: .highlighted)
             } else {
                 print("오류 발생, 버튼 확인 요망")

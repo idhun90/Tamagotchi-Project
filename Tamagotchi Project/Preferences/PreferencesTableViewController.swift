@@ -70,7 +70,7 @@ class PreferencesTableViewController: UITableViewController {
         // '내 이름 설정하기' 항목 선택 시
         if indexPath.row == 0 {
             
-            let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+            let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: ChangeNameViewController.identifier) as! ChangeNameViewController
             
             self.navigationController?.pushViewController(vc, animated: true)
@@ -79,7 +79,7 @@ class PreferencesTableViewController: UITableViewController {
         // '다마고치 변경하기' 항목 선택 시
         if indexPath.row == 1 {
             
-            let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+            let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.identifier) as! TamagotchiCollectionViewController
             
             self.navigationController?.pushViewController(vc, animated: true)
@@ -103,7 +103,7 @@ class PreferencesTableViewController: UITableViewController {
                 let windowsScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowsScene?.delegate as? SceneDelegate
                 
-                let sb = UIStoryboard(name: "Tamagotchi", bundle: nil)
+                let sb = UIStoryboard(name: StoryboardName.storyboard, bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: TamagotchiCollectionViewController.identifier) as! TamagotchiCollectionViewController
                 
                 sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
